@@ -4,87 +4,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Révisions : Économie, Droit & Management</title>
+    <title>Révisions Complètes : Éco, Droit & Management</title>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg-body: #f8fafc;
+            --primary: #1e40af;
+            --primary-hover: #1e3a8a;
+            --bg-body: #f1f5f9;
             --bg-card: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --accent-theme1: #f97316;
-            --accent-theme2: #06b6d4;
-            --accent-theme3: #eab308;
-            --accent-theme4: #ec4899;
-            --accent-theme5: #10b981;
-            --accent-theme6: #8b5cf6;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border: #cbd5e1;
+
+            --accent-theme1: #ea580c;
+            --accent-theme2: #0891b2;
+            --accent-theme3: #ca8a04;
+            --accent-theme4: #db2777;
+            --accent-theme5: #059669;
+            --accent-theme6: #7c3aed;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
             background-color: var(--bg-body);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.5;
             padding: 20px;
         }
 
         header {
             text-align: center;
             margin-bottom: 30px;
-            padding: 20px;
+            padding: 25px;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
         }
 
         header h1 {
             color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 8px;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
         }
 
         header p {
             color: var(--text-muted);
+            font-size: 1.05rem;
         }
 
         /* Navigation Onglets */
         .tabs-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
             justify-content: center;
             margin-bottom: 30px;
         }
 
         .tab-btn {
             background: white;
-            border: 2px solid var(--border);
-            padding: 10px 16px;
+            border: 1px solid var(--border);
+            padding: 12px 20px;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: all 0.2s ease;
             color: var(--text-muted);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .tab-btn:hover {
             border-color: var(--primary);
             color: var(--primary);
+            transform: translateY(-1px);
         }
 
         .tab-btn.active {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(30, 64, 175, 0.2);
         }
 
         /* Contenu des Thèmes */
@@ -94,13 +100,13 @@
 
         .theme-content.active {
             display: block;
-            animation: fadeIn 0.4s ease;
+            animation: slideUp 0.4s ease-out;
         }
 
-        @keyframes fadeIn {
+        @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(15px);
             }
 
             to {
@@ -110,26 +116,32 @@
         }
 
         .theme-header {
-            padding: 15px 20px;
-            border-radius: 10px;
+            padding: 18px 24px;
+            border-radius: 12px;
             color: white;
-            font-weight: bold;
-            font-size: 1.25rem;
-            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         /* Flashcards Grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+        }
+
+        @media (max-width: 500px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Flashcard structure 3D */
         .card-container {
-            perspective: 1000px;
-            min-height: 380px;
+            perspective: 1500px;
+            min-height: 580px;
         }
 
         .card {
@@ -137,10 +149,10 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         .card.flipped {
@@ -152,8 +164,8 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            border-radius: 12px;
-            padding: 24px;
+            border-radius: 16px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             border: 1px solid var(--border);
@@ -164,105 +176,173 @@
         /* Recto (Question) */
         .card-front {
             justify-content: space-between;
-            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
         }
 
         .card-front .question-tag {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             font-weight: 800;
             letter-spacing: 0.05em;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .card-front .question-text {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #0f172a;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            line-height: 1.4;
         }
 
         .card-front .savoirs-associes {
-            border-top: 1px solid var(--border);
-            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
         }
 
         .card-front .savoirs-title {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--text-muted);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .card-front .savoirs-list {
-            list-style-type: square;
-            padding-left: 18px;
-            font-size: 0.85rem;
-            color: var(--text-main);
+            list-style-type: none;
+            font-size: 0.95rem;
+            color: #334155;
         }
 
-        /* Verso (Réponse / Définition) */
+        .card-front .savoirs-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .card-front .savoirs-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Verso (Réponse / Définition détaillée) */
         .card-back {
             transform: rotateY(180deg);
             background: #ffffff;
-            border-top: 5px solid var(--primary);
+            border-top: 6px solid var(--primary);
         }
 
         .card-back h4 {
-            font-size: 1rem;
+            font-size: 1.15rem;
             color: var(--primary);
-            margin-bottom: 12px;
-            border-bottom: 2px solid #eff6ff;
-            padding-bottom: 6px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .definitions-content {
-            font-size: 0.9rem;
-            color: #334155;
+            font-size: 0.92rem;
+            color: #1e293b;
             flex-grow: 1;
+            line-height: 1.6;
         }
 
-        .definitions-content p,
-        .definitions-content ul {
-            margin-bottom: 10px;
+        .definitions-content section {
+            margin-bottom: 18px;
+        }
+
+        .definitions-content h5 {
+            font-size: 0.95rem;
+            color: #0f172a;
+            margin-bottom: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            background: #f1f5f9;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .definitions-content p {
+            margin-bottom: 8px;
         }
 
         .definitions-content ul {
-            padding-left: 18px;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .definitions-content li {
+            margin-bottom: 4px;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .example-block {
+            background-color: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            font-size: 0.88rem;
+        }
+
+        .law-block {
+            background-color: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.88rem;
         }
 
         .hint-click {
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            margin-top: auto;
+            margin-top: 20px;
             font-style: italic;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 10px;
         }
 
         /* Case de validation "Acquis" */
         .card-status {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 10px;
-            padding-top: 10px;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 12px;
             border-top: 1px dashed var(--border);
         }
 
         .card-status input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             cursor: pointer;
+            accent-color: var(--primary);
         }
 
         .card-status label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: 600;
             cursor: pointer;
             user-select: none;
         }
 
-        /* Thèmes de couleur spécifiques */
+        /* Couleurs Thèmes spécifiques */
         .t1-color {
             background-color: var(--accent-theme1);
         }
@@ -334,30 +414,22 @@
         .t6-text {
             color: var(--accent-theme6);
         }
-
-        /* Styles spécifiques des définitions */
-        .sub-list {
-            padding-left: 15px;
-            margin-top: 5px;
-            list-style-type: circle;
-        }
     </style>
 </head>
 
 <body>
 
     <header>
-        <h1>Fiches d'Économie, Droit et Management</h1>
-        <p>Cliquez sur une carte pour voir les définitions associées. Cochez les notions acquises au fur et à mesure.
-        </p>
+        <h1>Fiches Révision BAC+2</h1>
+        <p>Économie, Droit & Management de l'Entreprise — Version Ultra-Détaillée</p>
     </header>
 
     <div class="tabs-container">
         <button class="tab-btn active" onclick="switchTab(1)">Thème 1</button>
         <button class="tab-btn" onclick="switchTab(2)">Thème 2</button>
         <button class="tab-btn" onclick="switchTab(3)">Thème 3</button>
-        <button class="tab-btn" onclick="switchTab(5)">Thème 5 (Mutations)</button>
-        <button class="tab-btn" onclick="switchTab(4)">Thème 4 (Numérique)</button>
+        <button class="tab-btn" onclick="switchTab(5)">Thème 5</button>
+        <button class="tab-btn" onclick="switchTab(4)">Thème 4</button>
         <button class="tab-btn" onclick="switchTab(6)">Thème 6</button>
     </div>
 
@@ -370,42 +442,81 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t1-text">Question 1</div>
+                            <div class="question-tag t1-text">Question 1 — Économie / Management</div>
                             <div class="question-text">Comment s'établissent les relations entre l'entreprise et son
                                 environnement économique ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>Les agents économiques et leurs rôles</li>
-                                <li>Les échanges entre les agents</li>
-                                <li>Rôle du marché et fonctionnement (concurrence, barrières)</li>
-                                <li>Asymétrie de l'information / Externalités (+ et -)</li>
-                                <li>Rôle des banques & marchés financiers</li>
+                                <li>Agents économiques, flux réels et financiers, marchés</li>
+                                <li>Structures de marché (Monopole, Oligopole, Concurrence)</li>
+                                <li>Barrières à l'entrée (financières, techniques, juridiques)</li>
+                                <li>Asymétries d'information et externalités positives/négatives</li>
+                                <li>Banques (financement indirect) vs Marchés financiers (financement direct)</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t1-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t1-text">#Éco</span></h4>
                         <div class="definitions-content">
-                            <p><strong>Agents économiques :</strong> Ménages (consomment, salariés), État/CL (bpi,
-                                subventions), Banques (financement), Entreprises (produisent), Assoc., Extérieur
-                                (Import/Export).</p>
-                            <p><strong>Marchés :</strong> Du travail (en tension), financier, des biens et services
-                                (inflation, baisse du PA). Structures : concurrence pure et parfaite, oligopole,
-                                monopole/quasi-monopole.</p>
-                            <p><strong>Barrières à l'entrée :</strong> Technologiques (IA), financières
-                                (investissements), juridiques (RGPD, brevets), structurelles, culturelles.</p>
-                            <p><strong>Déséquilibres :</strong> Asymétrie d'information (position dominante, maîtrise de
-                                l'info) ; Externalités positives (IA, télétravail) ou négatives (pollution, burn-out).
-                            </p>
-                            <p><strong>Marché financier vs Banques :</strong> Banques = intermédiation. Marché financier
-                                (ex: CAC 40) = financement direct (augmentation de capital pour R&D, PGI, brevets).</p>
+                            <section>
+                                <h5>1. Agents Économiques & Marchés</h5>
+                                <p>L'entreprise est en interaction constante avec les autres agents : les <span
+                                        class="highlight">Ménages</span> (fournissent le travail, consomment), l'<span
+                                        class="highlight">État et Collectivités</span> (subventionnent, prélèvent
+                                    taxes/impôts), les <span class="highlight">Banques</span> et le <span
+                                        class="highlight">Reste du monde</span>.</p>
+                                <p>Les échanges se font sur trois grands marchés : le marché des biens & services, le
+                                    marché du travail (soumis à de fortes tensions de recrutement) et le marché
+                                    financier.</p>
+                            </section>
+
+                            <section>
+                                <h5>2. Barrières à l'entrée</h5>
+                                <p>Obstacles qui rendent difficile l'implantation d'un nouveau concurrent sur un marché
+                                    :</p>
+                                <ul>
+                                    <li><span class="highlight">Financières :</span> Investissements initiaux massifs
+                                        (ex : serveurs, machines).</li>
+                                    <li><span class="highlight">Technologiques :</span> Maîtrise d'une technologie
+                                        brevetée ou de l'IA.</li>
+                                    <li><span class="highlight">Juridiques :</span> Normes réglementaires strictes,
+                                        RGPD, licences d'exploitation.</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>3. Dysfonctionnements du marché</h5>
+                                <ul>
+                                    <li><span class="highlight">Asymétries d'information :</span> Situation où l'un des
+                                        partenaires dispose de plus d'informations que l'autre, pouvant fausser la
+                                        concurrence ou mener à un abus de position dominante.</li>
+                                    <li><span class="highlight">Externalités négatives :</span> Dommages causés par
+                                        l'activité (ex: pollution, burn-out lié aux outils numériques) sans compensation
+                                        financière.</li>
+                                    <li><span class="highlight">Externalités positives :</span> Effets bénéfiques
+                                        gratuits (ex: l'arrivée d'une entreprise innovante dynamise le commerce local et
+                                        forme la main-d'œuvre locale).</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>4. Financement de l'activité</h5>
+                                <ul>
+                                    <li><span class="highlight">Intermédiation (indirect) :</span> Recours aux crédits
+                                        bancaires traditionnels pour financer le fonds de roulement ou du matériel.</li>
+                                    <li><span class="highlight">Désintermédiation (direct) :</span> Levées de fonds
+                                        directement sur les marchés financiers (émission d'actions ou d'obligations, ex:
+                                        pour financer de la R&D d'envergure, des Progiciels de Gestion Intégrés (PGI) ou
+                                        des brevets).</li>
+                                </ul>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t1q1-check" onclick="stopPropagation(event)">
-                            <label for="t1q1-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t1q1-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -415,39 +526,80 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t1-text">Question 2</div>
+                            <div class="question-tag t1-text">Question 2 — Droit</div>
                             <div class="question-text">Comment les contrats sécurisent-ils les relations entre
                                 l'entreprise et ses partenaires ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>Les principes contractuels et leur évolution</li>
-                                <li>La formation du contrat (conditions de validité)</li>
-                                <li>Le contenu et les clauses du contrat</li>
+                                <li>Négociations précontractuelles & Rupture abusive</li>
+                                <li>Conditions de validité du contrat (Consentement, Capacité, Contenu)</li>
+                                <li>Typologie des contrats & Clauses spécifiques (Pénale, Réserve de propriété, etc.)
+                                </li>
+                                <li>Inexécution du contrat, résiliation vs résolution</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t1-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t1-text">#Droit</span></h4>
                         <div class="definitions-content">
-                            <p><strong>1. Phase précontractuelle :</strong> Pourparlers/cahier des charges. Rupture de
-                                bonne foi (sans volonté de nuire) = pas de sanction, mais rupture brutale et tardive =
-                                dommages et intérêts (d et i), sans compensation des pertes de gains attendus.</p>
-                            <p><strong>2. Formation :</strong> Accord de volonté créant des obligations. Conditions de
-                                validité : consentement libre/éclairé, capacité des parties, contenu licite et certain.
-                            </p>
-                            <p><strong>3. Contrat & Clauses :</strong> Synallagmatique, onéreux, d'adhésion ou de gré à
-                                gré, exécution immédiate/successive. Clauses spécifiques : révision de prix, réserve de
-                                propriété, clause pénale (fixe d et i à l'avance en cas d'inexécution).</p>
-                            <p><strong>4. Effets :</strong> Force obligatoire pour les parties, modification possible
-                                par avenant (accord mutuel), résolution (effet rétroactif) ou résiliation (pour
-                                l'avenir).</p>
+                            <section>
+                                <h5>1. Phase Précontractuelle & Pourparlers</h5>
+                                <p>Les négociations doivent être menées de <span class="highlight">bonne foi</span>. La
+                                    rupture des pourparlers est libre, mais elle devient abusive si elle est brutale,
+                                    tardive et sans motif légitime.</p>
+                                <div class="law-block">
+                                    <strong>Jurisprudence :</strong> En cas de rupture abusive, la victime peut obtenir
+                                    des dommages et intérêts (responsabilité extracontractuelle), mais la loi exclut
+                                    expressément la compensation de la perte des gains attendus du contrat non conclu.
+                                </div>
+                            </section>
+
+                            <section>
+                                <h5>2. Validité d'un contrat (Art. 1128 du Code civil)</h5>
+                                <p>Trois conditions cumulatives sont requises sous peine de nullité (relative ou
+                                    absolue) :</p>
+                                <ul>
+                                    <li><span class="highlight">Le consentement :</span> Doit être libre et éclairé
+                                        (exempt de vices : erreur, dol/tromperie, violence).</li>
+                                    <li><span class="highlight">La capacité :</span> Être juridiquement apte à
+                                        contracter (majeur, non protégé).</li>
+                                    <li><span class="highlight">Un contenu licite et certain :</span> Conforme à la loi
+                                        et portant sur des prestations possibles et déterminées/déterminables.</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>3. Clauses Contractuelles Clés</h5>
+                                <ul>
+                                    <li><span class="highlight">Clause de réserve de propriété :</span> Le vendeur reste
+                                        propriétaire de la marchandise jusqu'au paiement intégral. Indispensable en cas
+                                        de faillite du client.</li>
+                                    <li><span class="highlight">Clause pénale :</span> Fixe forfaitairement à l'avance
+                                        le montant de l'indemnité due en cas de retard ou d'inexécution.</li>
+                                    <li><span class="highlight">Clause de révision de prix :</span> Permet d'ajuster le
+                                        prix selon un indice objectif (très utile en période d'inflation des matières
+                                        premières).</li>
+                                    <li><span class="highlight">Clause résolutoire :</span> Prévoit que le contrat sera
+                                        automatiquement anéanti en cas de manquement d'une partie.</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>4. Sanctions de l'inexécution</h5>
+                                <p>En cas de défaillance d'un partenaire : exécution forcée, réduction du prix,
+                                    exception d'inexécution (suspendre sa propre prestation).</p>
+                                <p>Pour l'annulation du contrat : <span class="highlight">Résolution</span> (effet
+                                    rétroactif pour les contrats instantanés, comme une vente) vs <span
+                                        class="highlight">Résiliation</span> (effet pour l'avenir pour les contrats
+                                    successifs, comme un abonnement SaaS ou un bail).</p>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t1q2-check" onclick="stopPropagation(event)">
-                            <label for="t1q2-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t1q2-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -457,40 +609,77 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t1-text">Question 3</div>
+                            <div class="question-tag t1-text">Question 3 — Management</div>
                             <div class="question-text">De quelle manière l'entreprise s'inscrit-elle dans son
                                 environnement ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>Les finalités de l'entreprise</li>
-                                <li>Les parties prenantes (internes / externes)</li>
-                                <li>Logique entrepreneuriale vs managériale</li>
-                                <li>Les indicateurs de performance (KPI)</li>
+                                <li>Finalités de l'entreprise (économiques, sociales, sociétales / RSE)</li>
+                                <li>Parties prenantes (Stakeholders) internes et externes</li>
+                                <li>Logique entrepreneuriale (Schumpeter) vs Logique managériale (Chandler)</li>
+                                <li>Indicateurs de performance globale (KPIs)</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t1-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t1-text">#Management</span></h4>
                         <div class="definitions-content">
-                            <p><strong>Finalités :</strong> Économiques, financières, sociales et sociétales (RSE).</p>
-                            <p><strong>Parties prenantes :</strong>
-                                <br>• <em>Internes :</em> salariés, alternants, encadrement, dirigeants, actionnaires,
-                                CSE.
-                                <br>• <em>Externes :</em> clients, sous-traitants, État, collectivités (subventions),
-                                partenaires.
-                            </p>
-                            <p><strong>Logiques :</strong> Entrepreneuriale (prise de risque, opportunités, création
-                                d'activité) vs Managériale (optimisation des ressources, gestion du personnel, atteinte
-                                d'objectifs).</p>
-                            <p><strong>Indicateurs (KPI) :</strong> Outils de mesure de la performance (ex: taux de
-                                bugs, pannes, rentabilité financière, satisfaction client).</p>
+                            <section>
+                                <h5>1. Finalités de l'Entreprise</h5>
+                                <p>L'entreprise ne cherche plus seulement à maximiser son profit (but lucratif). Elle
+                                    intègre une <span class="highlight">finalité sociale</span> (bien-être des
+                                    collaborateurs, alternants) et une <span class="highlight">finalité sociétale</span>
+                                    via la <span class="highlight">RSE</span> (Responsabilité Sociétale des Entreprises)
+                                    en limitant ses impacts écologiques.</p>
+                            </section>
+
+                            <section>
+                                <h5>2. Parties Prenantes (R.E. Freeman)</h5>
+                                <p>Individus ou groupes pouvant affecter ou être affectés par les décisions de
+                                    l'entreprise :</p>
+                                <ul>
+                                    <li><span class="highlight">Internes :</span> Salariés, cadres, actionnaires,
+                                        syndicats, Comité Social et Économique (CSE).</li>
+                                    <li><span class="highlight">Externes :</span> Clients, fournisseurs, sous-traitants,
+                                        banques, État, collectivités territoriales, associations écologiques.</li>
+                                </ul>
+                                <p><em>Enjeu managérial :</em> Concilier les intérêts souvent divergents de ces acteurs
+                                    (ex : hausse des salaires demandée par les salariés vs dividendes attendus par les
+                                    actionnaires).</p>
+                            </section>
+
+                            <section>
+                                <h5>3. Logique Entrepreneuriale vs Managériale</h5>
+                                <ul>
+                                    <li><span class="highlight">Logique Entrepreneuriale :</span> Portée par
+                                        l'entrepreneur. Elle consiste à capter des opportunités, innover, prendre des
+                                        risques financiers pour lancer une activité ou pénétrer un marché.</li>
+                                    <li><span class="highlight">Logique Managériale :</span> Portée par le manager
+                                        professionnel. Elle consiste à planifier, organiser les ressources, optimiser
+                                        l'existant, sécuriser et coordonner les équipes pour atteindre les objectifs
+                                        fixés par les propriétaires.</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>4. Indicateurs de performance (KPI)</h5>
+                                <p>Pour évaluer l'activité globale, on utilise des tableaux de bord contenant :</p>
+                                <ul>
+                                    <li>Des <span class="highlight">KPIs d'activité :</span> Taux de bugs logiciels,
+                                        nombre d'incidents techniques, taux de pannes machines.</li>
+                                    <li>Des <span class="highlight">KPIs financiers :</span> Chiffre d'affaires, marge
+                                        brute, niveau d'autofinancement.</li>
+                                    <li>Des <span class="highlight">KPIs RSE/Sociaux :</span> Bilan carbone, taux de
+                                        rotation du personnel (turnover), taux d'accidents du travail.</li>
+                                </ul>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t1q3-check" onclick="stopPropagation(event)">
-                            <label for="t1q3-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t1q3-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -507,38 +696,69 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t2-text">Question 1</div>
+                            <div class="question-tag t2-text">Question 1 — Économie</div>
                             <div class="question-text">Quel est le rôle de l'État dans la régulation économique ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>Rôle de l'État (allocation, redistribution, régulation)</li>
-                                <li>Politiques conjoncturelles et structurelles</li>
-                                <li>Régulation supranationale (Europe)</li>
-                                <li>Limites de l'intervention de l'État</li>
+                                <li>Les 3 fonctions de l'État (Musgrave : Allocation, Redistribution, Régulation)</li>
+                                <li>Politiques conjoncturelles (budgétaire et monétaire via la BCE)</li>
+                                <li>Politiques structurelles (R&D, transition écologique, éducation)</li>
+                                <li>Limites de l'action de l'État (dette publique, mondialisation)</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t2-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t2-text">#Éco</span></h4>
                         <div class="definitions-content">
-                            <p><strong>3 Fonctions de Musgrave :</strong> Allocation des ressources (biens publics),
-                                Redistribution (justice sociale/impôts) et Régulation (lutte contre chômage/inflation).
-                            </p>
-                            <p><strong>Politiques économiques :</strong>
-                                <br>• <em>Conjoncturelles :</em> Court terme (monétaire via la BCE, budgétaire via
-                                l'État) pour stabiliser l'économie.
-                                <br>• <em>Structurelles :</em> Long terme (recherche, éducation, transition écologique)
-                                pour modifier les structures économiques.
-                            </p>
-                            <p><strong>Cadre européen :</strong> Contraintes supranationales (pacte de stabilité,
-                                critères de déficit), harmonisation juridique.</p>
+                            <section>
+                                <h5>1. Les 3 Fonctions de l'État (R. Musgrave)</h5>
+                                <ul>
+                                    <li><span class="highlight">Allocation :</span> Financer et fournir les biens
+                                        publics non rentables pour le privé (infrastructures routières, sécurité,
+                                        éducation).</li>
+                                    <li><span class="highlight">Redistribution :</span> Réduire les inégalités de
+                                        revenus grâce à l'impôt progressif et au versement de prestations sociales.</li>
+                                    <li><span class="highlight">Régulation :</span> Lutter contre les déséquilibres
+                                        macroéconomiques (chômage, inflation, récession).</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>2. Politiques Conjoncturelles (Court Terme)</h5>
+                                <p>Visent à stabiliser l'économie à court terme face aux fluctuations :</p>
+                                <ul>
+                                    <li><span class="highlight">Politique Budgétaire :</span> Menée par l'État via les
+                                        dépenses publiques et la fiscalité. Elle peut être <span class="highlight">de
+                                            relance</span> (soutien de la demande, investissements) ou <span
+                                            class="highlight">de rigueur</span> (baisse du déficit public).</li>
+                                    <li><span class="highlight">Politique Monétaire :</span> Délégguée à la Banque
+                                        Centrale Européenne (BCE) en zone euro. Elle utilise les <span
+                                            class="highlight">taux directeurs</span> pour encourager le crédit (si bas)
+                                        ou calmer l'inflation (si élevés).</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>3. Politiques Structurelles (Long Terme)</h5>
+                                <p>Visent à modifier durablement le fonctionnement de l'économie et la croissance
+                                    potentielle. Exemples : investissements massifs dans l'enseignement supérieur,
+                                    subventions à la R&D, aides financières à la transition écologique.</p>
+                            </section>
+
+                            <section>
+                                <h5>4. Limites de l'interventionnisme</h5>
+                                <p>Contrainte extérieure liée à la mondialisation (risque de délocalisation des
+                                    entreprises si taxes trop élevées) et surtout la <span class="highlight">dette
+                                        publique</span> (critères du Pacte de stabilité européen limitant le déficit à
+                                    3% du PIB) qui réduit la marge de manœuvre de l'État.</p>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t2q1-check" onclick="stopPropagation(event)">
-                            <label for="t2q1-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t2q1-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -548,35 +768,71 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t2-text">Questions 2 & 3</div>
-                            <div class="question-text">Régulation par le droit & Intégration de l'environnement</div>
+                            <div class="question-tag t2-text">Questions 2 & 3 — Droit & Management</div>
+                            <div class="question-text">Comment le droit régule-t-il la concurrence et comment
+                                l'entreprise anticipe-t-elle son environnement ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>Droit de la concurrence & Autorités administratives indépendantes (AAI)</li>
-                                <li>Droit de la propriété industrielle (brevets, marques)</li>
-                                <li>Analyse PESTEL de l'environnement</li>
-                                <li>Rôle de l'innovation</li>
+                                <li>Droit de la concurrence : ententes, abus de position dominante</li>
+                                <li>Droit de la propriété industrielle (brevet, marque, dessins et modèles)</li>
+                                <li>Diagnostic de l'environnement : la méthode PESTEL</li>
+                                <li>L'innovation comme réponse aux mutations environnementales</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t2-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t2-text">#Droit-Mgmt</span></h4>
                         <div class="definitions-content">
-                            <p><strong>Régulation par le Droit :</strong> Encadrement des marchés par le droit de la
-                                concurrence (interdiction des ententes et abus de position dominante) sous l'égide
-                                d'autorités indépendantes (Autorité de la concurrence).</p>
-                            <p><strong>Propriété industrielle :</strong> Protection de l'innovation par le brevet
-                                (monopole d'exploitation temporaire, 20 ans) et la marque, favorisant la R&D.</p>
-                            <p><strong>Prise de décision & PESTEL :</strong> Analyse de l'environnement (Politique,
-                                Économique, Socioculturel, Technologique, Écologique, Légal) pour anticiper les
-                                opportunités/menaces.</p>
+                            <section>
+                                <h5>1. Régulation de la concurrence (Droit)</h5>
+                                <p>Pour garantir un marché libre et sain, l'<span class="highlight">Autorité de la
+                                        Concurrence</span> (AAI) sanctionne :</p>
+                                <ul>
+                                    <li><span class="highlight">Les ententes illicites :</span> Accords secrets entre
+                                        entreprises pour fixer les prix ou se répartir des zones géographiques.</li>
+                                    <li><span class="highlight">L'abus de position dominante :</span> Exploiter une
+                                        position de force sur un marché pour éliminer ou étouffer ses concurrents (ex:
+                                        pratiques de ventes liées).</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>2. Propriété Industrielle & Brevet</h5>
+                                <p>Le <span class="highlight">brevet</span> protège une invention technique nouvelle
+                                    issue de la R&D. Il offre un monopole légal d'exploitation de <span
+                                        class="highlight">20 ans</span> en contrepartie de la publication de
+                                    l'invention.</p>
+                                <p>La <span class="highlight">marque</span> protège le nom et l'identité visuelle
+                                    (renouvelable indéfiniment tous les 10 ans). Ces outils juridiques sont des
+                                    barrières à l'entrée très fortes.</p>
+                            </section>
+
+                            <section>
+                                <h5>3. Outil d'analyse stratégique : PESTEL</h5>
+                                <p>Permet à l'entreprise d'évaluer les menaces et opportunités de son
+                                    macro-environnement :</p>
+                                <ul>
+                                    <li><strong>P</strong>olitique : Stabilité gouvernementale, subventions régionales.
+                                    </li>
+                                    <li><strong>E</strong>conomique : Taux d'intérêt, niveau d'inflation, pouvoir
+                                        d'achat des ménages.</li>
+                                    <li><strong>S</strong>ocioculturel : Habitudes de consommation, besoin d'équilibre
+                                        vie pro/vie perso.</li>
+                                    <li><strong>T</strong>echnologique : Évolution de l'IA, automatisation,
+                                        cybersécurité.</li>
+                                    <li><strong>E</strong>cologique : Normes environnementales, raréfaction des
+                                        ressources.</li>
+                                    <li><strong>L</strong>égal : Évolution du droit du travail, du RGPD ou des lois
+                                        sectorielles.</li>
+                                </ul>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t2q2-check" onclick="stopPropagation(event)">
-                            <label for="t2q2-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t2q2-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -593,36 +849,72 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t3-text">Questions 1 & 2</div>
-                            <div class="question-text">Choix des facteurs de production & Structure juridique</div>
+                            <div class="question-tag t3-text">Questions 1 & 2 — Éco / Management</div>
+                            <div class="question-text">Quels facteurs déterminent la combinaison de production et la
+                                structure juridique choisies ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>Facteurs (travail, capital, matières premières, connaissances)</li>
-                                <li>Gains de productivité (IA, robotisation) & Chaîne de valeur de Porter</li>
-                                <li>Stratégie d'impartition (externalisation, sous-traitance, franchise)</li>
-                                <li>Choix juridique (EIRL, SA, SAS, SARL, ESS/Coopératives)</li>
+                                <li>Facteurs de production (Travail, Capital, Connaissances)</li>
+                                <li>Chaîne de valeur de Michael Porter</li>
+                                <li>Faire ou Faire-faire (Impartition : sous-traitance, franchise...)</li>
+                                <li>Choix juridiques : Entreprise individuelle vs Sociétés (SARL, SAS, SA, Coopérative)
+                                </li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t3-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t3-text">#Éco-Mgmt</span></h4>
                         <div class="definitions-content">
-                            <p><strong>Combinaison productive :</strong> Choix d'intensité capitaliste (ex: IA/cobots)
-                                pour générer des gains de productivité malgré la hausse du coût des matières premières.
-                            </p>
-                            <p><strong>Chaîne de valeur (Porter) :</strong> Identification des activités clés et de
-                                soutien créatrices de valeur. Arbitrage : faire (interne) ou faire faire (impartition :
-                                sous-traitance, franchise, licence).</p>
-                            <p><strong>Structure juridique :</strong> Déterminée par la responsabilité, le capital, la
-                                protection du patrimoine et le régime fiscal (IS/IR). Distinguer l'entreprise
-                                individuelle des sociétés (SARL, SAS, SA) et de l'ESS (coopératives, mutuelles).</p>
+                            <section>
+                                <h5>1. Combinaison des Facteurs de Production</h5>
+                                <p>L'entreprise combine le <span class="highlight">Facteur Travail</span> (salariés) et
+                                    le <span class="highlight">Facteur Capital</span> (machines, logiciels). Elle
+                                    cherche à optimiser la productivité globale. </p>
+                                <p>L'arbitrage dépend du coût relatif des facteurs : la hausse des coûts des matières
+                                    premières et du travail pousse à augmenter l'intensité en capital (ex :
+                                    robotisation, implémentation d'outils d'intelligence artificielle ou de cobots /
+                                    robots collaboratifs) pour dégager des gains de productivité.</p>
+                            </section>
+
+                            <section>
+                                <h5>2. Chaîne de Valeur (M. Porter) & Impartition</h5>
+                                <p>La <span class="highlight">chaîne de valeur</span> modélise l'activité de
+                                    l'entreprise en distinguant les fonctions principales (logistique, production,
+                                    marketing) et de soutien (R&D, RH, achats) afin d'identifier où se situent les <span
+                                        class="highlight">avantages concurrentiels</span>.</p>
+                                <p>De là découle l'arbitrage "faire ou faire-faire" :</p>
+                                <ul>
+                                    <li><span class="highlight">Intégration :</span> Réaliser l'activité en interne
+                                        (contrôle total, protection des secrets industriels).</li>
+                                    <li><span class="highlight">Impartition :</span> Confier l'activité à des
+                                        partenaires (externalisation, sous-traitance de spécialité, franchise, licence).
+                                        Permet de réduire ses coûts et de se concentrer sur son cœur de métier.</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>3. Le choix de la structure juridique</h5>
+                                <p>Le choix dépend de plusieurs critères essentiels :</p>
+                                <ul>
+                                    <li><span class="highlight">L'entreprise individuelle :</span> Patrimoine pro et
+                                        perso confondus (simplifié mais risqué), direction unique.</li>
+                                    <li><span class="highlight">Les sociétés (SARL, SAS, SA) :</span> Personnalité
+                                        morale distincte. Responsabilité des associés limitée à leurs apports, idéale
+                                        pour lever des fonds. La SAS offre une grande liberté contractuelle de gestion.
+                                    </li>
+                                    <li><span class="highlight">L'Économie Sociale et Solidaire (ESS) / Coopératives
+                                            :</span> Gouvernance démocratique (1 personne = 1 voix) et réinvestissement
+                                        obligatoire d'une grande partie des bénéfices pour le développement collectif.
+                                    </li>
+                                </ul>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t3q1-check" onclick="stopPropagation(event)">
-                            <label for="t3q1-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t3q1-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -632,40 +924,77 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t3-text">Questions 3, 4 & 5</div>
-                            <div class="question-text">Gestion des risques, Organisation des ressources & Financement
-                            </div>
+                            <div class="question-tag t3-text">Questions 3, 4 & 5 — Droit / Management</div>
+                            <div class="question-text">Comment gérer les risques juridiques, mobiliser les ressources et
+                                financer l'activité ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>Responsabilité contractuelle et extracontractuelle</li>
-                                <li>Ressources tangibles et intangibles</li>
-                                <li>Styles de management (paternaliste, collaboratif...)</li>
-                                <li>Financement (interne/externe, bilan, compte de résultat)</li>
+                                <li>Responsabilité Contractuelle vs Extracontractuelle (Art. 1240)</li>
+                                <li>Ressources tangibles / intangibles (E. Penrose) et compétences (Hamet / Prahalad)
+                                </li>
+                                <li>Styles de direction (R. Likert : autoritaire, paternaliste, consultatif,
+                                    participatif)</li>
+                                <li>Bilan (Patrimoine) vs Compte de Résultat (Activité)</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t3-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t3-text">#Droit-Mgmt-Fin</span></h4>
                         <div class="definitions-content">
-                            <p><strong>Risques & Responsabilités :</strong>
-                                <br>• <em>Contractuelle :</em> inexécution ou mauvaise exécution.
-                                <br>• <em>Extracontractuelle :</em> dommage causé à un tiers (nécessite faute,
-                                préjudice, lien de causalité). Clauses d'exonération : force majeure, fait d'un tiers,
-                                faute de la victime.
-                            </p>
-                            <p><strong>Ressources :</strong> Tangibles (matérielles, humaines, financières) et
-                                intangibles (brevets, réputation, compétences). Styles de management : autoritaire,
-                                paternaliste, consultatif, participatif.</p>
-                            <p><strong>Financement :</strong> Interne (autofinancement) ou Externe (emprunt,
-                                augmentation de capital, bpi). Équilibre financier suivi via le bilan (patrimoine) et le
-                                compte de résultat (activité).</p>
+                            <section>
+                                <h5>1. Responsabilités de l'Entreprise</h5>
+                                <ul>
+                                    <li><span class="highlight">Responsabilité Contractuelle :</span> Issue du
+                                        non-respect des obligations d'un contrat signé (retard de livraison, produit non
+                                        conforme).</li>
+                                    <li><span class="highlight">Responsabilité Extracontractuelle (Art. 1240 du Code
+                                            civil) :</span> Obligation de réparer un préjudice causé à autrui en dehors
+                                        de tout contrat. Exige la réunion de 3 éléments : <span class="highlight">une
+                                            Faute</span> (acte volontaire ou négligence), <span class="highlight">un
+                                            Préjudice</span> (matériel, corporel ou moral certain) et <span
+                                            class="highlight">un Lien de causalité</span> direct entre la faute et le
+                                        préjudice.</li>
+                                    <li><span class="highlight">Exonération :</span> L'entreprise peut se décharger en
+                                        prouvant la force majeure (imprévisible, irrésistible, extérieur), la faute de
+                                        la victime ou le fait imprévisible d'un tiers.</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>2. Ressources et Styles de Direction</h5>
+                                <p>D'après Edith Penrose, la performance dépend de la mobilisation de :</p>
+                                <ul>
+                                    <li><span class="highlight">Ressources tangibles :</span> Physiques, humaines
+                                        (alternants, ingénieurs), financières.</li>
+                                    <li><span class="highlight">Ressources intangibles :</span> Brevets, réputation,
+                                        bases de données, compétences internes (le "savoir-faire").</li>
+                                </ul>
+                                <p>Ces ressources sont encadrées par 4 styles de direction (Likert) : autoritaire,
+                                    paternaliste, consultatif et <span class="highlight">participatif</span>
+                                    (implication active des équipes dans les décisions, favorisant l'innovation).</p>
+                            </section>
+
+                            <section>
+                                <h5>3. Équilibre Financier (Bilan / Compte de résultat)</h5>
+                                <ul>
+                                    <li><span class="highlight">Le Bilan :</span> Photographie du patrimoine de
+                                        l'entreprise à un instant T. Il liste l'Actif (ce que l'entreprise possède :
+                                        brevets, locaux, stocks, créances) et le Passif (ses dettes, capitaux propres et
+                                        origines de financement).</li>
+                                    <li><span class="highlight">Le Compte de Résultat :</span> Mesure l'activité
+                                        économique sur l'exercice. Il oppose les <span class="highlight">Charges</span>
+                                        (achats de matières premières, salaires, électricité) et les <span
+                                            class="highlight">Produits</span> (ventes de biens/services) pour dégager un
+                                        bénéfice ou une perte.</li>
+                                </ul>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t3q3-check" onclick="stopPropagation(event)">
-                            <label for="t3q3-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t3q3-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -682,35 +1011,67 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t5-text">Question 1</div>
-                            <div class="question-text">Quelles sont les principales évolutions du marché du travail ?
-                            </div>
+                            <div class="question-tag t5-text">Question 1 — Économie / Management</div>
+                            <div class="question-text">Quelles sont les principales évolutions et tensions sur le marché
+                                du travail ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>L'offre et la demande de travail (déséquilibres)</li>
-                                <li>La segmentation du marché du travail</li>
-                                <li>Les politiques de l'emploi (structurelles)</li>
+                                <li>Offre vs Demande de travail, chômage structurel/frictionnel</li>
+                                <li>Segmentation du marché (marché primaire vs secondaire)</li>
+                                <li>Attractivité, marque employeur et rétention des compétences</li>
+                                <li>La clause de dédit-formation (mécanisme de protection de l'employeur)</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t5-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t5-text">#Éco-Mgmt</span></h4>
                         <div class="definitions-content">
-                            <p><strong>Déséquilibres :</strong> Exemples criants dans le secteur informatique (manque de
-                                formation, pénurie de personnel qualifié, turnover élevé).</p>
-                            <p><strong>Rétention des compétences :</strong> Enjeu majeur de fidélisation via le
-                                management, l'équilibre vie pro/vie perso, ou des clauses spécifiques comme la
-                                <em>clause de dédit-formation</em> (remboursement des frais de formation en cas de
-                                départ précoce).</p>
-                            <p><strong>Intervention publique :</strong> Politiques structurelles de long terme de l'État
-                                et des régions (subventions massives de l'alternance, plans de formation).</p>
+                            <section>
+                                <h5>1. Tensions & Déséquilibres du marché</h5>
+                                <p>Le marché du travail est souvent caractérisé par une <span
+                                        class="highlight">asymétrie</span> ou une inadéquation quantitative et
+                                    qualitative entre l'Offre de travail (les candidats) et la Demande de travail (les
+                                    besoins des entreprises).</p>
+                                <div class="example-block">
+                                    <strong>Exemple concret de vos fiches :</strong> Dans le secteur de l'informatique
+                                    ou du développement d'applications, les recruteurs font face à de vives tensions de
+                                    recrutement (pénurie de profils qualifiés) qui provoquent un "turnover" (rotation du
+                                    personnel) élevé et contraignent les entreprises à optimiser leur <span
+                                        class="highlight">marque employeur</span>.
+                                </div>
+                            </section>
+
+                            <section>
+                                <h5>2. Segmentation du Marché (Doeringer & Piore)</h5>
+                                <ul>
+                                    <li><span class="highlight">Marché primaire :</span> Emplois stables (CDI), bien
+                                        rémunérés, perspectives d'évolution (ex : ingénieurs en cybersécurité,
+                                        administrateurs réseau).</li>
+                                    <li><span class="highlight">Marché secondaire :</span> Emplois précaires (CDD,
+                                        intérim), peu qualifiés, forte flexibilité subie par les salariés.</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>3. Protection et clause de dédit-formation</h5>
+                                <p>Pour conserver ses talents tout en investissant massivement dans leur formation (ex:
+                                    certifications cloud, formations IA), l'entreprise peut insérer une clause
+                                    spécifique dans le contrat :</p>
+                                <ul>
+                                    <li><span class="highlight">Clause de dédit-formation :</span> En contrepartie du
+                                        financement d'une formation coûteuse par l'entreprise, le salarié s'engage à
+                                        rester à son service pendant une durée minimale (ex : 2 à 3 ans). S'il
+                                        démissionne avant, il doit rembourser l'intégralité ou une partie des frais de
+                                        formation à l'employeur.</li>
+                                </ul>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t5q1-check" onclick="stopPropagation(event)">
-                            <label for="t5q1-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t5q1-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -720,35 +1081,76 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t5-text">Questions 2 & 3</div>
-                            <div class="question-text">Droit du travail & Impact des mutations sur les conditions de
-                                travail</div>
+                            <div class="question-tag t5-text">Questions 2 & 3 — Droit & Management</div>
+                            <div class="question-text">Comment le droit encadre-t-il la relation d'emploi et comment
+                                adapter les conditions de travail ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>Sources du droit (Loi, convention collective, accord d'entreprise, contrat)</li>
-                                <li>Rupture du rapport d'emploi (licenciement, rupture conventionnelle)</li>
-                                <li>Motivation et satisfaction (GPEC, flexibilité, télétravail)</li>
+                                <li>Hiérarchie des normes juridiques (Droit du travail, NAO)</li>
+                                <li>Clauses du contrat de travail (confidentialité, mobilité, non-concurrence)</li>
+                                <li>Rupture de contrat (Licenciement économique, faute simple/grave/lourde)</li>
+                                <li>Qualité de Vie au Travail (QVT), GPEC, aménagement du temps</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t5-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t5-text">#Droit-Mgmt</span></h4>
                         <div class="definitions-content">
-                            <p><strong>Droit & Contrat de travail :</strong> Clauses sensibles : mobilité,
-                                confidentialité (contrepartie), dédit-formation. Ruptures : licenciement pour faute
-                                (simple, grave, lourde avec intention de nuire) ou rupture conventionnelle négociée.</p>
-                            <p><strong>Droit négocié :</strong> Rôle central des syndicats, conventions collectives et
-                                de la Négociation Annuelle Obligatoire (NAO).</p>
-                            <p><strong>Conditions de travail modernes :</strong> Nécessité de concilier vie privée et
-                                vie professionnelle (télétravail régulé, horaires flexibles, chèques vacances,
-                                RSE/mobilité douce comme l'achat de vélos électriques).</p>
+                            <section>
+                                <h5>1. Droit négocié & Hiérarchie des normes</h5>
+                                <p>Le droit du travail s'appuie sur la loi, mais également de plus en plus sur les
+                                    conventions collectives de branche et les accords d'entreprise. </p>
+                                <p>Les représentants du personnel et les syndicats mènent périodiquement des <span
+                                        class="highlight">NAO (Négociations Annuelles Obligatoires)</span> portant sur
+                                    les salaires, l'égalité professionnelle et l'organisation du temps de travail.</p>
+                            </section>
+
+                            <section>
+                                <h5>2. Clauses sensibles du Contrat de Travail</h5>
+                                <ul>
+                                    <li><span class="highlight">Clause de confidentialité :</span> Obligation de ne pas
+                                        divulguer d'informations sensibles (secrets industriels, codes sources, bases de
+                                        données clients). Doit être justifiée et proportionnée, mais ne nécessite pas de
+                                        contrepartie financière (contrairement à la clause de non-concurrence).</li>
+                                    <li><span class="highlight">Clause de mobilité :</span> Le salarié accepte par
+                                        avance que son lieu de travail puisse être modifié dans une zone géographique
+                                        définie.</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>3. Ruptures de contrat et motifs de licenciement</h5>
+                                <ul>
+                                    <li><span class="highlight">Rupture conventionnelle :</span> Accord amiable d'un
+                                        commun accord ouvrant droit aux allocations chômage.</li>
+                                    <li><span class="highlight">Licenciement pour motif personnel disciplinaire :</span>
+                                        <br>• <em>Faute simple :</em> insuffisance, erreur légère (ouvre droit au
+                                        préavis et indemnités).
+                                        <br>• <em>Faute grave :</em> violation grave rendant impossible le maintien dans
+                                        l'entreprise (ex : abandon de poste, insultes ; perte des indemnités de préavis
+                                        et de licenciement).
+                                        <br>• <em>Faute lourde :</em> implique l'intention de nuire à l'employeur (ex:
+                                        sabotage informatique, vol de données pour un concurrent).
+                                    </li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>4. Aménagement des conditions de travail (QVT)</h5>
+                                <p>Pour concilier vie personnelle et professionnelle et réduire le stress au travail
+                                    (RPS), l'entreprise met en place des mesures de flexibilité : aménagement du <span
+                                        class="highlight">télétravail régulé</span> (ex: 2 ou 3 jours par semaine par
+                                    accord d'entreprise), horaires à la carte, ou aides à la <span
+                                        class="highlight">mobilité douce</span> (financement d'un parc de vélos à
+                                    assistance électrique pour les salariés).</p>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t5q2-check" onclick="stopPropagation(event)">
-                            <label for="t5q2-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t5q2-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -765,39 +1167,68 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t4-text">Question 1</div>
-                            <div class="question-text">Comment le numérique transforme-t-il l'environnement des
-                                entreprises ?</div>
+                            <div class="question-tag t4-text">Question 1 — Économie / Management</div>
+                            <div class="question-text">Comment le numérique transforme-t-il les modèles économiques et
+                                l'environnement ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>La place de marché (Marketplaces BtoB, BtoC, CtoC...)</li>
-                                <li>Externalités de réseau positives et négatives</li>
-                                <li>Évolution des modèles : économie collaborative, usage vs propriété</li>
-                                <li>Normes (ISO, AFNOR) et standards (PDF...)</li>
+                                <li>Marketplaces (BtoB, BtoC, CtoC, BtoG)</li>
+                                <li>Économie d'usage vs Propriété, modèles d'abonnements (SaaS, Cloud)</li>
+                                <li>Externalités de réseau positives/négatives</li>
+                                <li>Normes (ISO, AFNOR) vs Standards industriels (de fait)</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t4-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t4-text">#Éco-Mgmt</span></h4>
                         <div class="definitions-content">
-                            <p><strong>Marketplace :</strong> Plateformes de mise en relation d'acheteurs et vendeurs.
-                                Modèles : BtoB (inter-entreprises), BtoC (vers consommateurs), CtoC (Leboncoin), BtoG
-                                (vers l'administration).</p>
-                            <p><strong>Économie de l'usage :</strong> Glissement de la propriété vers l'usage (location,
-                                abonnements logiciels type SaaS).</p>
-                            <p><strong>Normes vs Standards :</strong>
-                                <br>• <em>Norme :</em> Spécification technique obligatoire ou volontaire établie par un
-                                organisme officiel (ISO, AFNOR).
-                                <br>• <em>Standard :</em> Établi par le marché ou de fait par une industrie dominante
-                                (ex : format PDF d'Adobe).
-                            </p>
+                            <section>
+                                <h5>1. Modèles de Plateformes & Marketplaces</h5>
+                                <p>La transformation numérique a généralisé l'usage des <span class="highlight">places
+                                        de marché</span> (marketplaces) qui mettent en relation offreurs et demandeurs
+                                    virtuellement :</p>
+                                <ul>
+                                    <li><strong>BtoC :</strong> Business to Consumer (vente directe aux particuliers).
+                                    </li>
+                                    <li><strong>BtoB :</strong> Business to Business (inter-entreprises, ex: achat de
+                                        serveurs ou de licences progicielles).</li>
+                                    <li><strong>CtoC :</strong> Consumer to Consumer (particulier à particulier, ex :
+                                        Vinted, Leboncoin).</li>
+                                    <li><strong>BtoG :</strong> Business to Government (entreprises privées répondant à
+                                        des marchés publics, ex : via la plateforme de facturation obligatoire Chorus
+                                        Pro).</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>2. Économie de l'usage et du partage</h5>
+                                <p>Les entreprises délaissent l'achat d'infrastructures physiques (capitaux lourds) au
+                                    profit de l'usage par abonnement (SaaS - Software as a Service). Cela apporte de la
+                                    flexibilité : les dépenses passent d'investissements physiques (CAPEX) à des coûts
+                                    de fonctionnement opérationnels (OPEX).</p>
+                            </section>
+
+                            <section>
+                                <h5>3. Différence entre Normes & Standards</h5>
+                                <p>Ces règles guident l'interopérabilité des outils numériques :</p>
+                                <ul>
+                                    <li><span class="highlight">Norme :</span> Document officiel et consensuel élaboré
+                                        par des organismes de normalisation indépendants (<span
+                                            class="highlight">ISO</span> au niveau international, <span
+                                            class="highlight">AFNOR</span> en France).</li>
+                                    <li><span class="highlight">Standard :</span> Spécification technique issue d'un
+                                        accord privé de fait ou de la domination commerciale d'un acteur majeur sur le
+                                        marché (ex: le format PDF d'Adobe ou l'architecture d'un fondeur comme NVIDIA).
+                                    </li>
+                                </ul>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t4q1-check" onclick="stopPropagation(event)">
-                            <label for="t4q1-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t4q1-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -807,40 +1238,69 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t4-text">Question 2</div>
-                            <div class="question-text">Dans quelle mesure le droit répond-il aux questions posées par le
-                                numérique ?</div>
+                            <div class="question-tag t4-text">Question 2 — Droit</div>
+                            <div class="question-text">Comment le droit protège-t-il les actifs immatériels et les
+                                données personnelles à l'ère numérique ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>Le rôle de la CNIL et du RGPD (Données personnelles)</li>
-                                <li>Protection des actifs immatériels (logiciels, BDD, nom de domaine)</li>
-                                <li>Preuve électronique & Contrats numériques (SaaS, vente)</li>
+                                <li>Régulation européenne : RGPD (CNIL) et Digital Services Act (DSA)</li>
+                                <li>Protection des créations numériques (Logiciels, Bases de données)</li>
+                                <li>Noms de domaine (Cybersquattage / Concurrence déloyale)</li>
+                                <li>Équivalence de la preuve électronique et contrat numérique</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t4-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t4-text">#Droit</span></h4>
                         <div class="definitions-content">
-                            <p><strong>Données & RGPD :</strong> Protection des données à caractère personnel sous le
-                                contrôle de la CNIL en France et du DSA au niveau européen pour la responsabilité des
-                                hébergeurs.</p>
-                            <p><strong>Propriété Intellectuelle :</strong>
-                                <br>• <em>Logiciel :</em> Droit d'auteur (patrimonial pour l'exploitation et moral pour
-                                le respect de l'œuvre). Dépôt APP conseillé pour prouver l'antériorité.
-                                <br>• <em>Bases de données :</em> Double protection par droit d'auteur (originalité de
-                                la structure) et droit <em>sui generis</em> (protection du contenu/investissement).
-                                <br>• <em>Noms de domaine :</em> Règle du 1er arrivé, 1er servi. Lutte contre le
-                                cybersquatting (concurrence déloyale).
-                            </p>
-                            <p><strong>Preuve & Contrat électronique :</strong> Équivalence de la preuve écrite s'il y a
-                                identification fiable et garantie d'intégrité (signature électronique).</p>
+                            <section>
+                                <h5>1. Protection des Données Personnelles (RGPD)</h5>
+                                <p>Le <span class="highlight">RGPD</span>, contrôlé en France par la <span
+                                        class="highlight">CNIL</span>, impose de lourdes obligations aux entreprises
+                                    manipulant des données de clients ou salariés : consentement explicite, droit
+                                    d'accès, d'effacement (droit à l'oubli) et tenue d'un registre de traitement.</p>
+                                <p>Le <span class="highlight">Digital Services Act (DSA)</span> harmonise quant à lui au
+                                    niveau européen la responsabilité des hébergeurs et plateformes concernant les
+                                    contenus illicites.</p>
+                            </section>
+
+                            <section>
+                                <h5>2. Propriété Intellectuelle du Numérique</h5>
+                                <ul>
+                                    <li><span class="highlight">Logiciels :</span> Protégés par le <span
+                                            class="highlight">droit d'auteur</span> (pas de brevet en Europe pour un
+                                        code informatique pur). On protège l'expression du code (droits patrimoniaux et
+                                        moraux) à condition qu'il soit original. Le dépôt auprès de l'<span
+                                            class="highlight">Agence pour la Protection des Programmes (APP)</span> est
+                                        fortement conseillé pour dater la création.</li>
+                                    <li><span class="highlight">Bases de données :</span> Double protection. D'une part
+                                        par le droit d'auteur (si la structure est originale), d'autre part par le <span
+                                            class="highlight">droit sui generis des bases de données</span> qui protège
+                                        le contenu contre le pillage, pour récompenser l'investissement financier et
+                                        humain colossal consenti pour constituer la base.</li>
+                                    <li><span class="highlight">Nom de domaine :</span> Attribution selon la règle
+                                        "premier arrivé, premier servi". Si un tiers réserve de mauvaise foi un nom de
+                                        marque déposé, il commet un acte de <span
+                                            class="highlight">cybersquattage</span>, sanctionnable sur le terrain de la
+                                        concurrence déloyale.</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>3. Contrat Électronique et Preuve</h5>
+                                <p>Le Code civil accorde la même force probante à l'écrit électronique qu'à l'écrit sur
+                                    support papier, sous deux conditions strictes : que l'auteur puisse être dûment
+                                    identifié et que le document soit conservé dans des conditions de nature à en
+                                    garantir l'intégrité (utilisation d'une <span class="highlight">signature
+                                        électronique</span> certifiée).</p>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t4q2-check" onclick="stopPropagation(event)">
-                            <label for="t4q2-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t4q2-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -850,34 +1310,57 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t4-text">Question 3</div>
-                            <div class="question-text">Quelle est l'incidence du numérique sur le management ?</div>
+                            <div class="question-tag t4-text">Question 3 — Management</div>
+                            <div class="question-text">Quelles sont les incidences du numérique sur le management et le
+                                système d'information ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>Spécialisation, intégration et action collective</li>
-                                <li>Modes de coordination & Flexibilité du travail</li>
-                                <li>Le Système d'Information (SI) : opportunités et risques</li>
+                                <li>Le Système d'Information (SI) : rôles et risques (cybersécurité)</li>
+                                <li>Organisation en réseau, décentralisation et collaboration</li>
+                                <li>Impacts humains : Surcharge cognitive, droit à la déconnexion</li>
+                                <li>Transformation des modes de coordination (Télétravail)</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t4-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t4-text">#Management</span></h4>
                         <div class="definitions-content">
-                            <p><strong>Organisation en réseau :</strong> Partage de compétences et travail collaboratif
-                                décentralisé.</p>
-                            <p><strong>Flexibilité du travail :</strong> Le télétravail modifie les modes de
-                                coordination. Équilibre requis : ex. formule 3j à l'entreprise / 2j à la maison pour
-                                maintenir le lien social et éviter l'isolement.</p>
-                            <p><strong>Surcharge cognitive & Risques :</strong> Réactivité extrême exigée (smartphones,
-                                notifications constantes) pouvant mener au burn-out. Questions managériales émergentes
-                                autour de l'usage de l'IA.</p>
+                            <section>
+                                <h5>1. Rôle & Risques du Système d'Information (SI)</h5>
+                                <p>Le SI collecte, stocke, traite et distribue l'information (ex: via un PGI ou ERP). Il
+                                    est indispensable à la prise de décision rapide.</p>
+                                <p><em>Risques :</em> Les cyberattaques (ransomwares, vol de données sensibles), les
+                                    pannes matérielles ou logicielles (taux d'incidents informatiques à suivre comme
+                                    KPI) et la perte de souveraineté numérique.</p>
+                            </section>
+
+                            <section>
+                                <h5>2. Organisation en Réseau & Coordination</h5>
+                                <p>Le numérique aplatit la hiérarchie traditionnelle au profit d'une <span
+                                        class="highlight">organisation en réseau</span>, plus transversale. Les modes de
+                                    coordination (Henry Mintzberg) reposent davantage sur l'ajustement mutuel et
+                                    l'utilisation de plateformes collaboratives.</p>
+                            </section>
+
+                            <section>
+                                <h5>3. Surcharge cognitive & Droit à la déconnexion</h5>
+                                <p>Le flux continu d'e-mails, de messages instantanés et de notifications génère une
+                                    surcharge d'informations susceptible de provoquer l'épuisement professionnel
+                                    (burn-out).</p>
+                                <div class="law-block">
+                                    <strong>Obligation légale :</strong> L'employeur doit négocier des chartes ou des
+                                    accords sur le <span class="highlight">droit à la déconnexion</span> (ex : blocage
+                                    de l'envoi d'e-mails professionnels le week-end ou après 20h) pour préserver la
+                                    santé mentale des équipes.
+                                </div>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t4q3-check" onclick="stopPropagation(event)">
-                            <label for="t4q3-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t4q3-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -894,39 +1377,63 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t6-text">Question 1</div>
-                            <div class="question-text">Comment le diagnostic éclaire-t-il les choix stratégiques de
+                            <div class="question-tag t6-text">Question 1 — Management</div>
+                            <div class="question-text">Comment mener un diagnostic stratégique rigoureux pour orienter
                                 l'entreprise ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
-                                <li>Le diagnostic externe (PESTEL, Forces de Porter)</li>
-                                <li>Le diagnostic interne (Ressources matérielles/immatérielles)</li>
-                                <li>L'analyse SWOT</li>
+                                <li>L'outil d'analyse globale : la matrice SWOT</li>
+                                <li>Diagnostic interne : Ressources (Penrose) & Compétences</li>
+                                <li>Diagnostic externe : PESTEL & Les 5(+1) Forces de M. Porter</li>
+                                <li>Souveraineté économique et ingérence de l'État (Atos, etc.)</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t6-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t6-text">#Management</span></h4>
                         <div class="definitions-content">
-                            <p><strong>Diagnostic Externe :</strong>
-                                <br>• <em>PESTEL :</em> Identifier les opportunités/menaces macro-économiques (ex:
-                                législation DSA act, émergence de l'IA).
-                                <br>• <em>5 Forces de Porter (Micro-environnement) :</em> Intensité concurrentielle
-                                (oligopole/monopole), pouvoir de négociation des clients, des fournisseurs, menace des
-                                nouveaux entrants (ex: NVIDIA), produits de substitution (ex: IA générative).
-                            </p>
-                            <p><strong>Diagnostic Interne :</strong> Analyse des forces et faiblesses sur les plans
-                                financier, humain, technologique et organisationnel.</p>
-                            <p><strong>Souveraineté & État :</strong> Rôle de régulateur ou d'acteur de l'État pour
-                                préserver les actifs stratégiques nationaux (ex: intervention étatique chez Atos pour
-                                des raisons de souveraineté).</p>
+                            <section>
+                                <h5>1. Diagnostic Interne (Forces / Faiblesses)</h5>
+                                <p>Évalue la capacité de l'entreprise à créer de la valeur à travers :</p>
+                                <ul>
+                                    <li>Ses <span class="highlight">Ressources</span> tangibles et intangibles (marques,
+                                        technologies propres).</li>
+                                    <li>Ses <span class="highlight">Compétences distinctives :</span> Savoir-faire
+                                        d'ingénierie unique, réactivité du service après-vente.</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>2. Diagnostic Externe (Opportunités / Menaces)</h5>
+                                <p>S'appuie sur le PESTEL et sur les <span class="highlight">Forces concurrentielles de
+                                        Porter</span> :</p>
+                                <ul>
+                                    <li>Intensité de la concurrence sur le secteur.</li>
+                                    <li>Pouvoir de négociation des clients et des fournisseurs (ex : dépendance d'un
+                                        sous-traitant vis-à-vis d'un donneur d'ordre unique).</li>
+                                    <li>Menace des nouveaux entrants et des produits de substitution.</li>
+                                    <li>Rôle de l'État (Régulation/Politiques publiques).</li>
+                                </ul>
+                                <div class="example-block">
+                                    <strong>Cas de souveraineté (issu de vos fiches) :</strong> L'intervention de l'État
+                                    dans les entreprises technologiques en difficulté (comme Atos) vise à sécuriser des
+                                    actifs stratégiques et sensibles (supercalculateurs, logiciels de défense militaire)
+                                    face à des investisseurs étrangers pour préserver la souveraineté nationale.
+                                </div>
+                            </section>
+
+                            <section>
+                                <h5>3. Synthèse SWOT (Strengths, Weaknesses, Opportunities, Threats)</h5>
+                                <p>Croise les Forces/Faiblesses de l'interne avec les Opportunités/Menaces de l'externe
+                                    afin de dégager des axes stratégiques viables.</p>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t6q1-check" onclick="stopPropagation(event)">
-                            <label for="t6q1-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t6q1-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -936,40 +1443,70 @@
                 <div class="card" onclick="flipCard(this, event)">
                     <div class="card-face card-front">
                         <div>
-                            <div class="question-tag t6-text">Question 2</div>
-                            <div class="question-text">Quels sont les choix stratégiques opérés par l'entreprise ?</div>
+                            <div class="question-tag t6-text">Question 2 — Management</div>
+                            <div class="question-text">Quelles grandes options et modalités stratégiques s'offrent à
+                                l'entreprise ?</div>
                         </div>
                         <div class="savoirs-associes">
-                            <div class="savoirs-title">Savoirs associés</div>
+                            <div class="savoirs-title">Savoirs et concepts clés</div>
                             <ul class="savoirs-list">
                                 <li>Domaines d'Activité Stratégique (DAS)</li>
-                                <li>Options stratégiques globales (spécialisation vs diversification)</li>
-                                <li>Modalités de croissance (interne, externe, conjointe)</li>
+                                <li>Stratégies globales (Spécialisation vs Diversification)</li>
+                                <li>Stratégies de domaine (Domination par les coûts vs Différenciation)</li>
+                                <li>Voies de croissance (Interne, Externe, Conjointe)</li>
                             </ul>
                         </div>
-                        <div class="hint-click">Cliquez pour retourner</div>
+                        <div class="hint-click">Cliquez pour retourner la carte</div>
                     </div>
                     <div class="card-face card-back t6-border">
-                        <h4>Notions Clés & Définitions</h4>
+                        <h4>Réponses & Détails des fiches <span class="t6-text">#Management</span></h4>
                         <div class="definitions-content">
-                            <p><strong>DAS (Domaine d'Activité Stratégique) :</strong> Sous-partie de l'entreprise qui
-                                possède ses propres facteurs clés de succès (FCS).</p>
-                            <p><strong>Options Stratégiques :</strong>
-                                <br>• <em>Spécialisation :</em> Se concentrer sur un seul métier.
-                                <br>• <em>Diversification :</em> S'implanter sur de nouveaux marchés/activités.
-                                <br>• <em>Domination par les coûts</em> (baisser les coûts de production) vs
-                                <em>Différenciation</em> (proposer une offre unique, ex: Mistral AI dans l'IA
-                                souveraine).
-                            </p>
-                            <p><strong>Modalités de Croissance :</strong>
-                                <br>• <em>Interne (organique) :</em> Recrutements, investissements physiques.
-                                <br>• <em>Externe :</em> Rachat d'autres entreprises (fusions/acquisitions).
-                                <br>• <em>Conjointe :</em> Partenariats stratégiques avec mutualisation des ressources.
-                            </p>
+                            <section>
+                                <h5>1. Stratégies de Domaine (M. Porter)</h5>
+                                <p>S'appliquent au niveau d'un DAS spécifique :</p>
+                                <ul>
+                                    <li><span class="highlight">Domination par les coûts :</span> Réduire au maximum les
+                                        coûts de conception/production pour proposer un prix inférieur à la concurrence
+                                        et capter d'importants volumes de ventes.</li>
+                                    <li><span class="highlight">Différenciation :</span> Proposer une offre ayant des
+                                        caractéristiques uniques pour laquelle le client accepte de payer un prix plus
+                                        élevé (ex : Mistral AI ou NVIDIA avec leurs architectures de processeurs de
+                                        pointe).</li>
+                                    <li><span class="highlight">Focalisation (Niche) :</span> Se concentrer sur un
+                                        segment de marché très étroit délaissé par les géants.</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>2. Stratégies Globales</h5>
+                                <ul>
+                                    <li><span class="highlight">Spécialisation :</span> L'entreprise développe un seul
+                                        métier pour y acquérir une expertise absolue (ex : éditeur d'un progiciel métier
+                                        de niche).</li>
+                                    <li><span class="highlight">Diversification :</span> S'engager dans de nouveaux
+                                        métiers ou secteurs d'activité (permet de répartir les risques et d'exploiter de
+                                        nouvelles synergies).</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h5>3. Modalités de Croissance</h5>
+                                <ul>
+                                    <li><span class="highlight">Croissance Interne (Organique) :</span> Développement de
+                                        l'entreprise par ses propres moyens (embauche, achat de serveurs, création d'une
+                                        nouvelle application). Plus lente mais maîtrisée.</li>
+                                    <li><span class="highlight">Croissance Externe :</span> Rachat ou fusion avec des
+                                        entreprises concurrentes ou complémentaires. Très rapide, elle permet d'acquérir
+                                        directement des parts de marché et des brevets.</li>
+                                    <li><span class="highlight">Croissance Conjointe :</span> Coopération avec une autre
+                                        entreprise tout en restant juridiquement indépendante (ex : partenariat
+                                        d'alliance technologique).</li>
+                                </ul>
+                            </section>
                         </div>
                         <div class="card-status">
                             <input type="checkbox" id="t6q2-check" onclick="stopPropagation(event)">
-                            <label for="t6q2-check" onclick="stopPropagation(event)">Maîtrisé</label>
+                            <label for="t6q2-check" onclick="stopPropagation(event)">Notion acquise</label>
                         </div>
                     </div>
                 </div>
@@ -978,32 +1515,34 @@
     </div>
 
     <script>
-        // Fonction pour changer d'onglet
+        // Changement d'onglet fluide
         function switchTab(themeNumber) {
-            // Désactiver tous les onglets et contenus
             const tabs = document.querySelectorAll('.tab-btn');
             const contents = document.querySelectorAll('.theme-content');
 
             tabs.forEach(tab => tab.classList.remove('active'));
             contents.forEach(content => content.classList.remove('active'));
 
-            // Activer l'onglet sélectionné
-            // Trouver le bouton cliqué (géré simplement par index ou matching de texte si besoin)
+            // Ajoute la classe active à l'onglet cliqué
             event.currentTarget.classList.add('active');
 
-            // Afficher le contenu lié
+            // Affiche le thème cible
             const targetContent = document.getElementById('theme' + themeNumber);
             if (targetContent) {
                 targetContent.classList.add('active');
             }
         }
 
-        // Fonction pour retourner une carte au clic
+        // Retournement de la carte
         function flipCard(cardElement, event) {
+            // Empêche le retournement involontaire si l'utilisateur clique sur la barre de défilement interne
+            if (event.target.tagName === 'SELECT' || event.target.tagName === 'INPUT' || event.target.tagName === 'LABEL') {
+                return;
+            }
             cardElement.classList.toggle('flipped');
         }
 
-        // Empêche le retournement de la carte quand on clique sur la case à cocher de validation
+        // Protection de clic sur les cases de validation
         function stopPropagation(event) {
             event.stopPropagation();
         }
